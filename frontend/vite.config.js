@@ -21,8 +21,5 @@ extend:{
 
 },
 
-
-
-
   plugins: [tailwindcss(),react()],
 })
