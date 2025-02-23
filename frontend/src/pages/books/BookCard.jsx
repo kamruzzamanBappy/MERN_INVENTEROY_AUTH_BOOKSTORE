@@ -37,7 +37,7 @@ const BookCard = ({ book }) => {
           </p>
           <button
             onClick={() => handleAddToCart(book)}
-            className=" bg-amber-500  px-12 py-2 rounded-md text-base font-secondary font-bold hover:bg-secondary hover:text-white transition-all duration-200 cursor-pointer;
+            className=" bg-primary  px-12 py-2 rounded-md text-base font-secondary font-bold hover:bg-secondary hover:text-white transition-all duration-200 cursor-pointer;
  space-x-1 flex items-center gap-1 "
           >
             <FiShoppingCart className="" />
