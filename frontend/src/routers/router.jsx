@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Login from "../components/Login.jsx";
 import Register from "../components/Register.jsx";
+import CartPage from "../pages/books/CartPage.jsx";
 import Home from "../pages/home/Home.jsx";
 const router = createBrowserRouter([
   {
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+
+      {
+        path: "/cart",
+        element: <CartPage />,
       },
     ],
   },
