@@ -9,6 +9,16 @@ const bookSchema = new mongoose.Schema({
         type:String,
         required: true,
     },
+    oldPrice:{
+type:Number,
+required: true,
+    },
+
+    newPrice:{
+        type:Number,
+        required: true,
+            },
+
     category:{
         type:String,
         required: true,

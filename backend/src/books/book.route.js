@@ -1,25 +1,47 @@
 const express = require("express");
 const router = express.Router();
 const Book = require('./book.model.js');
+const { postABook, getAllBooks, getSingleBook, UpdateBook, deleteBook } = require("./book.controller.js");
 
-// Post a book
-router.post("/create-book", async (req, res) => {
-  try {
-    // চেক করুন title ফিল্ড আছে কিনা
-    if (!req.body.title) {
-      return res.status(400).send({ message: "Title is required!" });
-    }
+ 
+//post a book
+router.post("/create-book",postABook );
 
-    const newBook = new Book(req.body);  // নতুন বই তৈরি
-    await newBook.save();  // ডাটাবেজে বইটি সেভ করুন
 
-    res.status(200).send({ message: "Book posted successfully", book: newBook });
-  } catch (error) {
-    console.error("Error creating book", error);
+//get all book
+router.get("/",getAllBooks)
 
-    // যদি কোনো ভুল হয়, তবে সঠিকভাবে রেসপন্স দিন
-    res.status(500).send({ message: "Failed to create book", error: error.message });
-  }
-});
+
+// single book endpoint
+router.get("/:id",getSingleBook);
+
+
+
+
+//update a book endpoint
+router.put("/edit/:id", UpdateBook);
+
+
+router.delete("/:id",deleteBook)
+
+
 
 module.exports = router;
+
+
+ // frontend => backend server=> controller=>book schema=>database=>send to server=>back to fronend
+
+// post = when submit something frontend to db
+
+// get = when get something back from db
+
+// put/patch = when edit or update something
+
+// delete = when delete something
+
+
+
+ //we will send a request from an api from the frontend {we will hit a req to create a post from this frontend using this api(postman)}
+ //it will receive this req on the backend server. based on req it will go to controller
+ // controller read the logic if logic is valid it will call the schema to match the data
+ //
