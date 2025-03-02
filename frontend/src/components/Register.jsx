@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const Register = () => {
   const [message, setMessage] = useState("");
-  const { registerUser } = useAuth();
+  const { registerUser, signInWithGoogle } = useAuth();
+  const navigate = useNavigate();
   console.log(registerUser);
   const {
     register,
@@ -29,7 +30,16 @@ const Register = () => {
     }
   };
 
-  const handleGoogleSignIn = () => {};
+  const handleGoogleSignIn = async () => {
+    try {
+      await signInWithGoogle();
+      alert("Login Successfully");
+      navigate("/");
+    } catch (error) {
+      alert("Please provide a valid email and password ");
+      console.error(error);
+    }
+  };
 
   return (
     <div className="h-[calc(100vh-120px)] border border-gray-300 flex justify-center items-center">
