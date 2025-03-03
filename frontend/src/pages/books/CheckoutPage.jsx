@@ -1,11 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 const CheckoutPage = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const totalPrice = cartItems
     .reduce((occ, item) => occ + item.newPrice, 0)
     .toFixed(2);
+
+  const { currentUser } = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
