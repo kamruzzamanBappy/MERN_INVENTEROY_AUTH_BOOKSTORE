@@ -2,9 +2,10 @@ import React from "react";
 import { FiShoppingCart } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { useFetchBookByIdQuery } from "../../redux/features/cart/booksApi";
+
 import { getImgUrl } from "../../utils/getImgUrl";
 // Import the addToCart action from your Redux slice (make sure to adjust the path based on your project structure)
+import { useFetchBookByIdQuery } from "../../redux/features/books/booksApi";
 import { addToCart } from "../../redux/features/cart/cartSlice"; // Adjust the path accordingly
 
 const SingleBook = () => {
